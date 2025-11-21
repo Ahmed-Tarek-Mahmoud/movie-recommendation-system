@@ -1,19 +1,34 @@
 import java.util.List;
 
-public class Movie {
-    private String title;
-    private String Id;
-    private List<String> genre;
+/**
+ * Movie class representing a movie entity
+ */
 
-    public List<String> getGenre() {
-        return genre;
-    }
+class Movie {
+	private String title;
+	private String movieId;
+	private List<String> genres;
 
-    public String getId() {
-        return Id;
-    }
+	public Movie(String title, String movieId, List<String> genres) {
+		this.title = title;
+		this.movieId = movieId;
+		this.genres = genres;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
+
+	public String getMovieId() {
+		return movieId;
+	}
+
+	public List<String> getGenres() {
+		return genres;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie{title='" + title + "', id='" + movieId + "', genres=" + genres + "}";
+	}
 }
