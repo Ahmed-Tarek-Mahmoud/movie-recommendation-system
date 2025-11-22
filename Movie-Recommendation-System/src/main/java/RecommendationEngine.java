@@ -1,5 +1,3 @@
-package engine;
-
 import java.util.*;
 
 /**
@@ -73,7 +71,7 @@ public class RecommendationEngine {
 		Set<String> matchingTitles = new HashSet<>();
 
 		for (Movie movie : allMovies.values()) {
-			if (movie.getGenres() != null) {
+			if (movie != null && movie.getGenres() != null) {
 				for (String genre : movie.getGenres()) {
 					if (genres.contains(genre)) {
 						matchingTitles.add(movie.getTitle());
@@ -126,4 +124,3 @@ public class RecommendationEngine {
 		return recommendations;
 	}
 }
-
