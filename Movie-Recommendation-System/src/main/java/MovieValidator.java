@@ -4,9 +4,9 @@ import java.util.List;
 public interface MovieValidator {
 
     default void ValidMovie(Movie movie){
-        MovieIdValid(movie.getId(), movie.getTitle());
+        MovieIdValid(movie.getMovieId(), movie.getTitle());
         MovieNameValid(movie.getTitle());
-        MovieGenresValid(movie.getGenre());
+        MovieGenresValid(movie.getGenres());
     }
 
     default void MovieIdValid(String movieId , String movieName){
