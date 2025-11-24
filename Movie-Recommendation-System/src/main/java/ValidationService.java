@@ -22,6 +22,14 @@ public class ValidationService implements UserValidator , MovieValidator{
         ensureMovieIdUniqueness();
     }
 
+    public void validateUsers() {
+        for (User user : users) {
+            ValidUser(user);
+            UserIds.add(user.getUserId().substring(user.getUserId().length() - 3));
+        }
+        ensureUserIdUniqueness();
+    }
+
     private void ensureMovieIdUniqueness() {
         for (int i = 0; i < MovieIds.size(); i++) {
             String idI = MovieIds.get(i);
@@ -29,6 +37,18 @@ public class ValidationService implements UserValidator , MovieValidator{
                 String idJ = MovieIds.get(j);
                 if (idI.equals(idJ)) {
                     throw new AppExceptions("Movie ID numbers " + movies.get(j).getId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
+                }
+            }
+        }
+    }
+
+    private void ensureUserIdUniqueness() {
+        for (int i = 0; i < UserIds.size(); i++) {
+            String idI = UserIds.get(i);
+            for (int j = i + 1; j < UserIds.size(); j++) {
+                String idJ = UserIds.get(j);
+                if (idI.equals(idJ)) {
+                    throw new AppExceptions("User ID numbers " + users.get(j).getUserId() + " aren't unique" , ErrorCode.USER_ID_UNIQUE_ERROR);
                 }
             }
         }
