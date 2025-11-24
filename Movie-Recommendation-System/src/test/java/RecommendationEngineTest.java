@@ -1,7 +1,9 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Before;
+
 import java.util.*;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit Tests for RecommendationEngine
@@ -12,7 +14,7 @@ public class RecommendationEngineTest {
 	private RecommendationEngine engine;
 	private Map<String, Movie> movieDatabase;
 
-	@BeforeEach
+	@Before
 	public void setUp() {
 		engine = new RecommendationEngine();
 		movieDatabase = createTestMovieDatabase();
