@@ -17,7 +17,7 @@ public class ValidationService implements UserValidator , MovieValidator{
     public void validateMovies() {
         for (Movie movie : movies) {
             ValidMovie(movie);
-            MovieIds.add(movie.getId().substring(movie.getId().length() -  3));
+            MovieIds.add(movie.getMovieId().substring(movie.getMovieId().length() -  3));
         }
         ensureMovieIdUniqueness();
     }
@@ -28,7 +28,7 @@ public class ValidationService implements UserValidator , MovieValidator{
             for (int j = i + 1; j < MovieIds.size(); j++) {
                 String idJ = MovieIds.get(j);
                 if (idI.equals(idJ)) {
-                    throw new AppExceptions("Movie ID numbers " + movies.get(j).getId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
+                    throw new AppExceptions("Movie ID numbers " + movies.get(j).getMovieId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
                 }
             }
         }

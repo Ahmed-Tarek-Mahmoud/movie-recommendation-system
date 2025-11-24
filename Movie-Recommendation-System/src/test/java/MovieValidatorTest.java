@@ -145,4 +145,85 @@ public class MovieValidatorTest extends ValidationServiceTest {
                 ErrorCode.MOVIE_ID_UNIQUE_ERROR,
                 "Movie ID numbers " + ID3 + " aren't unique");
     }
+
+
+
+    @Test
+    public void testMovieTitleInvalid1(){
+        String title = "interstellar";
+        String ID = "I001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Sci-Fi");
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1),
+                ErrorCode.MOVIE_TITLE_ERROR,
+                "Movie Title "+ title + " is wrong");
+    }
+
+    @Test
+    public void testMovieTitleInvalid2(){
+        String title = "Harry potter";
+        String ID = "H001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1),
+                ErrorCode.MOVIE_TITLE_ERROR,
+                "Movie Title "+ title + " is wrong");
+    }
+
+    @Test
+    public void testMovieTitleInvalid3(){
+        String title = "harry Potter";
+        String ID = "P001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1),
+                ErrorCode.MOVIE_TITLE_ERROR,
+                "Movie Title "+ title + " is wrong");
+    }
+
+    @Test
+    public void testMovieTitleInvalid4(){
+        String title = "harry potter";
+        String ID = "H001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1),
+                ErrorCode.MOVIE_TITLE_ERROR,
+                "Movie Title "+ title + " is wrong");
+    }
+
+    @Test
+    public void testMovieTitleValid1(){
+        String title = "Interstellar";
+        String ID = "I001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Sci-Fi");
+        Movie m1 = addMovie(title , ID , genres);
+        validationService.ValidMovie(m1);
+    }
+
+    @Test
+    public void testMovieTitleValid2(){
+        String title = "Harry Potter";
+        String ID = "HP001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        validationService.ValidMovie(m1);
+    }
+
+    @Test
+    public void testMovieGenreInvalid1(){
+        String title = "Interstellar";
+        String ID = "I001";
+        List<String> genres = new ArrayList<String>();
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1),
+                ErrorCode.MOVIE_GENRE_ERROR,
+                "genre category is empty");
+    }
 }
