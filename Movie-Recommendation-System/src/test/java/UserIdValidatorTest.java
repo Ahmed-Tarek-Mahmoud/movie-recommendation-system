@@ -9,7 +9,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         // valid: 9 digits Id
         User user = new User("ahmed","123456789",new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserIdValid(user.getUserId());
+        validationService.ensureUserIdUniqueness();
         assertEquals("123456789",user.getUserId());
     }
 
@@ -18,7 +19,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         // valid: Id length 9 with 8 digit one lowercase letter at end
         User user = new User("ahmed","12345678a",new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserIdValid(user.getUserId());
+        validationService.ensureUserIdUniqueness();
         assertEquals("12345678a",user.getUserId());
     }
 
@@ -27,7 +29,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         // valid: Id length 9 with 8 digit one uppercase letter at end
         User user = new User("ahmed","12345678A",new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserIdValid(user.getUserId());
+        validationService.ensureUserIdUniqueness();
         assertEquals("12345678A",user.getUserId());
     }
 
@@ -37,7 +40,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed",null,new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("Null Pointer Exception not thrown for null value");
         } catch (NullPointerException e) {
             assertNull(user.getUserId());
@@ -49,7 +53,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed","12345678",new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for wrong user id length");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
@@ -62,7 +67,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed","1",new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for wrong user id length");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
@@ -75,7 +81,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed","A12345678",new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id with letter at beginning");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
@@ -88,7 +95,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed","1234A5678",new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id with letter at middle");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
@@ -101,7 +109,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user = new User("ahmed","12345678#",new ArrayList<>());
         users.add(user);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id has not digit norletter at end");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
@@ -115,7 +124,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         users.add(user1);
         User user2 = new User("ahmed","12345678A",new ArrayList<>());
         users.add(user2);
-        validationService.validateUsers();
+        validationService.UserIdValid(user.getUserId());
+        validationService.ensureUserIdUniqueness();
     }
 
     @Test
@@ -126,7 +136,8 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user2 = new User("ahmed","123456789",new ArrayList<>());
         users.add(user2);
         try {
-            validationService.validateUsers();
+            validationService.UserIdValid(user.getUserId());
+            validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user ids are the same");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_UNIQUE_ERROR, e.getErrorCode());
