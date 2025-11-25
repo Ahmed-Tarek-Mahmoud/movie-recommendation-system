@@ -226,4 +226,14 @@ public class MovieValidatorTest extends ValidationServiceTest {
                 ErrorCode.MOVIE_GENRE_ERROR,
                 "genre category is empty");
     }
+
+    @Test
+    public void testAllCapMovieTitle(){
+        String title = "EGY";
+        String ID = "EGY001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        validationService.ValidMovie(m1);
+    }
 }

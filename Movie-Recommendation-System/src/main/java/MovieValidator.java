@@ -10,10 +10,11 @@ public interface MovieValidator {
     }
 
     default void MovieIdValid(String movieId , String movieName){
-        String[] words = movieName.split(" ");
         StringBuilder idLetters = new StringBuilder();
-        for (String word : words) {
-            idLetters.append(Character.toUpperCase(word.trim().charAt(0)));
+        for (char c : movieName.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                idLetters.append(c);
+            }
         }
         if(!movieId.startsWith(idLetters.toString()) || movieId.length() != (idLetters.length() + 3))
             throw new AppExceptions("Movie ID letters "+ movieId +" are wrong", ErrorCode.MOVIE_ID_LETTERS_ERROR);
