@@ -25,7 +25,7 @@ public class ValidationService implements UserValidator , MovieValidator{
     public void validateUsers() {
         for (User user : users) {
             ValidUser(user);
-            UserIds.add(user.getUserId().substring(user.getUserId().length() - 3));
+            UserIds.add(user.getUserId());
         }
         ensureUserIdUniqueness();
     }
