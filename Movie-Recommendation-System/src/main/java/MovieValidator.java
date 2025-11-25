@@ -4,8 +4,8 @@ import java.util.List;
 public interface MovieValidator {
 
     default void ValidMovie(Movie movie){
-        MovieIdValid(movie.getMovieId(), movie.getTitle());
         MovieNameValid(movie.getTitle());
+        MovieIdValid(movie.getMovieId(), movie.getTitle());
         MovieGenresValid(movie.getGenres());
     }
 
@@ -21,10 +21,15 @@ public interface MovieValidator {
     }
 
     default void MovieNameValid(String movieName){
-
+        String[] words = movieName.split(" ");
+        for(String word: words){
+            if(!Character.isUpperCase(word.charAt(0)))
+                throw new AppExceptions("Movie Title "+ movieName + " is wrong", ErrorCode.MOVIE_TITLE_ERROR);
+        }
     }
 
     default void MovieGenresValid(List<String> genres){
-
+        if(genres.isEmpty())
+            throw new AppExceptions("genre category is empty", ErrorCode.MOVIE_GENRE_ERROR);
     }
 }
