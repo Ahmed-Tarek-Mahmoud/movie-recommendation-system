@@ -117,7 +117,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m2 = addMovie(title2 , ID2 , genres2);
         assertValidationException(() -> validationService.validateMovies(),
                 ErrorCode.MOVIE_ID_UNIQUE_ERROR,
-                "Movie ID numbers " + ID1 + " aren't unique");
+                "Movie ID numbers " + ID2 + " aren't unique");
     }
 
     @Test
