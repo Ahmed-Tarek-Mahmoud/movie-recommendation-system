@@ -29,7 +29,7 @@ public class UserNameValidationTest {
         // Valid: only alphabetic characters
         User user = new User("hazem", "U001", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("hazem", user.getUserName());
     }
 
@@ -38,7 +38,7 @@ public class UserNameValidationTest {
         // Valid: alphabetic characters with spaces in between
         User user = new User("hazem ayman", "U002", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("hazem ayman", user.getUserName());
     }
 
@@ -47,7 +47,7 @@ public class UserNameValidationTest {
         // Valid: alphabetic characters with multiple spaces
         User user = new User("hazem ayman ali", "U003", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("hazem ayman ali", user.getUserName());
     }
 
@@ -56,7 +56,7 @@ public class UserNameValidationTest {
         // Valid: single alphabetic character
         User user = new User("A", "U004", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("A", user.getUserName());
     }
 
@@ -65,7 +65,7 @@ public class UserNameValidationTest {
         // Valid: lowercase alphabetic characters
         User user = new User("hazem ayman", "U005", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("hazem ayman", user.getUserName());
     }
 
@@ -74,7 +74,7 @@ public class UserNameValidationTest {
         // Valid: mixed case alphabetic characters
         User user = new User("Hazem Ayman", "U006", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
         assertEquals("Hazem Ayman", user.getUserName());
     }
 
@@ -83,7 +83,7 @@ public class UserNameValidationTest {
         // Invalid: username starts with space
         User user = new User(" hazem ayman", "U007", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class UserNameValidationTest {
         try {
             User user = new User(" hazem ayman", "U008", new ArrayList<>());
             users.add(user);
-            validationService.validateUsers();
+            validationService.UserNameValid(user.getUserName());
             fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
@@ -107,7 +107,7 @@ public class UserNameValidationTest {
         // Invalid: contains numeric characters
         User user = new User("hazem123", "U009", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class UserNameValidationTest {
         try {
             User user = new User("hazem123", "U010", new ArrayList<>());
             users.add(user);
-            validationService.validateUsers();
+            validationService.UserNameValid(user.getUserName());
             fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
@@ -128,7 +128,7 @@ public class UserNameValidationTest {
         // Invalid: contains special characters
         User user = new User("hazem@ayman", "U011", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -136,7 +136,7 @@ public class UserNameValidationTest {
         // Invalid: contains underscore
         User user = new User("hazem_ayman", "U012", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -144,7 +144,7 @@ public class UserNameValidationTest {
         // Invalid: contains dash/hyphen
         User user = new User("hazem-ayman", "U013", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -152,7 +152,7 @@ public class UserNameValidationTest {
         // Invalid: contains punctuation
         User user = new User("hazem.ayman", "U014", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -160,7 +160,7 @@ public class UserNameValidationTest {
         // Invalid: only spaces
         User user = new User("   ", "U015", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -168,7 +168,7 @@ public class UserNameValidationTest {
         // Invalid: empty string
         User user = new User("", "U016", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -176,7 +176,7 @@ public class UserNameValidationTest {
         // Invalid: multiple leading spaces
         User user = new User("  hazem ayman", "U017", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -184,7 +184,7 @@ public class UserNameValidationTest {
         // Invalid: mix of numbers and special characters
         User user = new User("hazem123@ayman", "U018", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 
     @Test
@@ -193,7 +193,7 @@ public class UserNameValidationTest {
         try {
             User user = new User("hazem ayman ", "U019", new ArrayList<>());
             users.add(user);
-            validationService.validateUsers();
+            validationService.UserNameValid(user.getUserName());
             assertEquals("hazem ayman ", user.getUserName());
         } catch (AppExceptions e) {
             // If validation rejects trailing spaces, this is expected
@@ -206,6 +206,6 @@ public class UserNameValidationTest {
         // Invalid: null username
         User user = new User(null, "U020", new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        validationService.UserNameValid(user.getUserName());
     }
 }
