@@ -68,7 +68,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
     @Test
     public void testMovieIDInvalid3_wrongLetters(){
         String title = "Harry Potter";
-        String ID = "ab001";
+        String ID = "AB001";
         List<String> genres = new ArrayList<String>();
         genres.add("Fantasy");
         Movie m1 = addMovie(title , ID , genres);
@@ -235,5 +235,17 @@ public class MovieValidatorTest extends ValidationServiceTest {
         genres.add("Fantasy");
         Movie m1 = addMovie(title , ID , genres);
         validationService.ValidMovie(m1);
+    }
+
+    @Test
+    public void testAllCapMovieTitle2(){
+        String title = "EGY";
+        String ID = "E001";
+        List<String> genres = new ArrayList<String>();
+        genres.add("Fantasy");
+        Movie m1 = addMovie(title , ID , genres);
+        assertValidationException(()-> validationService.ValidMovie(m1) ,
+                ErrorCode.MOVIE_ID_LETTERS_ERROR,
+                "Movie ID letters "+ ID +" are wrong");
     }
 }
