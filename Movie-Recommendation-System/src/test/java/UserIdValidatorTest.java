@@ -124,8 +124,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         users.add(user1);
         User user2 = new User("ahmed","12345678A",new ArrayList<>());
         users.add(user2);
-        validationService.UserIdValid(user.getUserId());
-        validationService.ensureUserIdUniqueness();
+        validationService.validateUsers();
     }
 
     @Test
@@ -136,8 +135,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         User user2 = new User("ahmed","123456789",new ArrayList<>());
         users.add(user2);
         try {
-            validationService.UserIdValid(user.getUserId());
-            validationService.ensureUserIdUniqueness();
+            validationService.validateUsers();
             fail("App Exception not thrown for user ids are the same");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_ID_UNIQUE_ERROR, e.getErrorCode());

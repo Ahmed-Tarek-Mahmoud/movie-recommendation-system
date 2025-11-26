@@ -14,12 +14,14 @@ public class OutputGenerator {
             for(User user : users) {
                 String user_id = user.getUserId();
                 String user_name = user.getUserName();
-                outputFile.write("Current User: " + user_name + ", ID: " + user_id);
-                outputFile.write("Movie Recommendations:");
+                outputFile.write("Current User: " + user_name + ", ID: " + user_id + "\n");
+                outputFile.write("Movie Recommendations: ");
                 List<String> userRecommendations = movieRecommendations.get(user_id);
                 for (int i=0; i<userRecommendations.size(); i++) {
-                    outputFile.write((i+1)+") "+ userRecommendations.get(i));
+                    outputFile.write(userRecommendations.get(i));
+                    if (i != userRecommendations.size() - 1) outputFile.write(", ");
                 }
+                outputFile.write("\n");
             }
             outputFile.close();
 

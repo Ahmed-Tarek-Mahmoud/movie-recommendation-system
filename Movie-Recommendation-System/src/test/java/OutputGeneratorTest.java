@@ -57,20 +57,22 @@ public class OutputGeneratorTest {
 
         Map<String, List<String>> movieRecommendations = recEngine.generateRecommendationsForUsers(users, allMovies);
 
-        FileWriter outputFileTest = new FileWriter("recommendationsTest.txt");
 
-        try {
+        try (FileWriter outputFileTest = new FileWriter("recommendationsTest.txt")) {
             for (User user : users) {
                 String user_id = user.getUserId();
                 String user_name = user.getUserName();
-                outputFileTest.write("Current User: " + user_name + ", ID: " + user_id);
-                outputFileTest.write("Movie Recommendations:");
+                outputFileTest.write("Current User: " + user_name + ", ID: " + user_id + "\n");
+                outputFileTest.write("Movie Recommendations: ");
                 List<String> userRecommendations = movieRecommendations.get(user_id);
                 for (int i = 0; i < userRecommendations.size(); i++) {
-                    outputFileTest.write((i + 1) + ") " + userRecommendations.get(i));
+                    outputFileTest.write(userRecommendations.get(i));
+                    if (i != userRecommendations.size() - 1) outputFileTest.write(", ");
                 }
+                outputFileTest.write("\n");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Error opening test file");
         }
 
