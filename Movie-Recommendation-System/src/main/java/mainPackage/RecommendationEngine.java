@@ -1,8 +1,10 @@
+package mainPackage;
+
 import java.util.*;
 
 /**
- * Recommendation Engine for Movie Recommendation System Recommends movies based
- * on genre preferences Dependencies: Movie and User classes
+ * Recommendation Engine for mainPackage.Movie Recommendation System Recommends movies based
+ * on genre preferences Dependencies: mainPackage.Movie and mainPackage.User classes
  */
 
 public class RecommendationEngine {
@@ -11,7 +13,7 @@ public class RecommendationEngine {
 	 * Generates movie recommendations for a user based on their liked movies
 	 * 
 	 * @param likedMovieIds List of movie IDs that the user likes
-	 * @param allMovies     Map of all movies (movieId -> Movie object)
+	 * @param allMovies     Map of all movies (movieId -> mainPackage.Movie object)
 	 * @return List of recommended movie titles
 	 */
 
@@ -104,7 +106,7 @@ public class RecommendationEngine {
 	/**
 	 * Generates recommendations for multiple users
 	 * 
-	 * @param users     List of User objects
+	 * @param users     List of mainPackage.User objects
 	 * @param allMovies Map of all available movies
 	 * @return Map of userId -> List of recommended movie titles
 	 */

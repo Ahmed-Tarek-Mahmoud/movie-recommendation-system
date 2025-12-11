@@ -1,10 +1,12 @@
+package mainPackage;
+
 import java.util.List;
 
 /**
- * Movie class representing a movie entity
+ * mainPackage.Movie class representing a movie entity
  */
 
-class Movie {
+public class Movie {
 	private String title;
 	private String movieId;
 	private List<String> genres;
@@ -29,6 +31,6 @@ class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie{title='" + title + "', id='" + movieId + "', genres=" + genres + "}";
+		return "mainPackage.Movie{title='" + title + "', id='" + movieId + "', genres=" + genres + "}";
 	}
 }
