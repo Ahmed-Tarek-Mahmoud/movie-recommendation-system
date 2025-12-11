@@ -3,13 +3,11 @@ package UnitTesting;
 import mainPackage.AppExceptions;
 import mainPackage.ErrorCode;
 import mainPackage.User;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-
 public class UserIdValidatorTest extends ValidationServiceTest {
     @Test
     public void testUserIdValid1(){
@@ -18,7 +16,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         users.add(user);
         validationService.UserIdValid(user.getUserId());
         validationService.ensureUserIdUniqueness();
-        Assert.assertEquals("123456789",user.getUserId());
+        assertEquals("123456789",user.getUserId());
     }
 
     @Test
@@ -28,7 +26,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         users.add(user);
         validationService.UserIdValid(user.getUserId());
         validationService.ensureUserIdUniqueness();
-        Assert.assertEquals("12345678a",user.getUserId());
+        assertEquals("12345678a",user.getUserId());
     }
 
     @Test
@@ -38,7 +36,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
         users.add(user);
         validationService.UserIdValid(user.getUserId());
         validationService.ensureUserIdUniqueness();
-        Assert.assertEquals("12345678A",user.getUserId());
+        assertEquals("12345678A",user.getUserId());
     }
 
     @Test
@@ -64,7 +62,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for wrong user id length");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
         }
     }
 
@@ -78,7 +76,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for wrong user id length");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_LENGTH_ERROR, e.getErrorCode());
         }
     }
 
@@ -92,7 +90,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id with letter at beginning");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
         }
     }
 
@@ -106,7 +104,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id with letter at middle");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
         }
     }
 
@@ -120,7 +118,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.ensureUserIdUniqueness();
             fail("App Exception not thrown for user id has not digit norletter at end");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_ERROR, e.getErrorCode());
         }
     }
 
@@ -145,7 +143,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
             validationService.validateUsers();
             fail("App Exception not thrown for user ids are the same");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_ID_UNIQUE_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_ID_UNIQUE_ERROR, e.getErrorCode());
         }
     }
 

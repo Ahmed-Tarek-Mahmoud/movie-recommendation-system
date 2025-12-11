@@ -3,6 +3,7 @@ package UnitTesting;
 import mainPackage.Movie;
 import mainPackage.OutputGenerator;
 import mainPackage.RecommendationEngine;
+import mainPackage.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +16,6 @@ import java.security.MessageDigest;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
-
-import mainPackage.User;
 
 public class OutputGeneratorTest {
     OutputGenerator outputGen;

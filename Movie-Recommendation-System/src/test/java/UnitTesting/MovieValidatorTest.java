@@ -250,6 +250,6 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "Movie ID letters "+ ID +" are wrong");
+                "mainPackage.Movie ID letters "+ ID +" are wrong");
     }
 }
