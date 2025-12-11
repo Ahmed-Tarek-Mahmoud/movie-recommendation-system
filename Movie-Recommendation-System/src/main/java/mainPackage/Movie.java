@@ -3,7 +3,7 @@ package mainPackage;
 import java.util.List;
 
 /**
- * mainPackage.Movie class representing a movie entity
+ *  Movie class representing a movie entity
  */
 
 public class Movie {
@@ -31,6 +31,6 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "mainPackage.Movie{title='" + title + "', id='" + movieId + "', genres=" + genres + "}";
+		return "Movie{title='" + title + "', id='" + movieId + "', genres=" + genres + "}";
 	}
 }

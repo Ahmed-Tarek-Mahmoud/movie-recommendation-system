@@ -31,6 +31,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "mainPackage.User{name='" + userName + "', id='" + userId + "', likedMovies=" + likedMovieIds + "}";
+		return "User{name='" + userName + "', id='" + userId + "', likedMovies=" + likedMovieIds + "}";
 	}
 }

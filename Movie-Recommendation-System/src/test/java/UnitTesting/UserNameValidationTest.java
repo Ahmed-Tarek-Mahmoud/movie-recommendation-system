@@ -95,10 +95,10 @@ public class UserNameValidationTest {
             User user = new User(" hazem ayman", "U008", new ArrayList<>());
             users.add(user);
             validationService.UserNameValid(user.getUserName());
-            fail("Expected mainPackage.AppExceptions to be thrown");
+            fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
-            assertTrue(e.getMessage().contains("mainPackage.User name") ||
+            assertTrue(e.getMessage().contains("User name") ||
                       e.getMessage().contains("username") || 
                       e.getMessage().contains("space"));
         }
@@ -119,7 +119,7 @@ public class UserNameValidationTest {
             User user = new User("hazem123", "U010", new ArrayList<>());
             users.add(user);
             validationService.UserNameValid(user.getUserName());
-            fail("Expected mainPackage.AppExceptions to be thrown");
+            fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
             assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
         }
