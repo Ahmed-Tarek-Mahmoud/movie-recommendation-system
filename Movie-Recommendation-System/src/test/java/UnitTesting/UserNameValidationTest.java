@@ -1,11 +1,6 @@
 package UnitTesting;
 
-import mainPackage.Movie;
-import mainPackage.User;
-import mainPackage.ValidationService;
-import mainPackage.AppExceptions;
-import mainPackage.ErrorCode;
-import org.junit.Assert;
+import mainPackage.*;
 import org.junit.Test;
 import org.junit.Before;
 import java.util.ArrayList;
@@ -37,7 +32,7 @@ public class UserNameValidationTest {
         User user = new User("hazem", "U001", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("hazem", user.getUserName());
+        assertEquals("hazem", user.getUserName());
     }
 
     @Test
@@ -46,7 +41,7 @@ public class UserNameValidationTest {
         User user = new User("hazem ayman", "U002", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("hazem ayman", user.getUserName());
+        assertEquals("hazem ayman", user.getUserName());
     }
 
     @Test
@@ -55,7 +50,7 @@ public class UserNameValidationTest {
         User user = new User("hazem ayman ali", "U003", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("hazem ayman ali", user.getUserName());
+        assertEquals("hazem ayman ali", user.getUserName());
     }
 
     @Test
@@ -64,7 +59,7 @@ public class UserNameValidationTest {
         User user = new User("A", "U004", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("A", user.getUserName());
+        assertEquals("A", user.getUserName());
     }
 
     @Test
@@ -73,7 +68,7 @@ public class UserNameValidationTest {
         User user = new User("hazem ayman", "U005", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("hazem ayman", user.getUserName());
+        assertEquals("hazem ayman", user.getUserName());
     }
 
     @Test
@@ -82,7 +77,7 @@ public class UserNameValidationTest {
         User user = new User("Hazem Ayman", "U006", new ArrayList<>());
         users.add(user);
         validationService.UserNameValid(user.getUserName());
-        Assert.assertEquals("Hazem Ayman", user.getUserName());
+        assertEquals("Hazem Ayman", user.getUserName());
     }
 
     @Test(expected = AppExceptions.class)
@@ -100,10 +95,10 @@ public class UserNameValidationTest {
             User user = new User(" hazem ayman", "U008", new ArrayList<>());
             users.add(user);
             validationService.UserNameValid(user.getUserName());
-            fail("Expected mainPackage.AppExceptions to be thrown");
+            fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
-            assertTrue(e.getMessage().contains("mainPackage.User name") ||
+            assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
+            assertTrue(e.getMessage().contains("User name") ||
                       e.getMessage().contains("username") || 
                       e.getMessage().contains("space"));
         }
@@ -124,9 +119,9 @@ public class UserNameValidationTest {
             User user = new User("hazem123", "U010", new ArrayList<>());
             users.add(user);
             validationService.UserNameValid(user.getUserName());
-            fail("Expected mainPackage.AppExceptions to be thrown");
+            fail("Expected AppExceptions to be thrown");
         } catch (AppExceptions e) {
-            Assert.assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
         }
     }
 
@@ -201,10 +196,10 @@ public class UserNameValidationTest {
             User user = new User("hazem ayman ", "U019", new ArrayList<>());
             users.add(user);
             validationService.UserNameValid(user.getUserName());
-            Assert.assertEquals("hazem ayman ", user.getUserName());
+            assertEquals("hazem ayman ", user.getUserName());
         } catch (AppExceptions e) {
             // If validation rejects trailing spaces, this is expected
-            Assert.assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
+            assertEquals(ErrorCode.USER_NAME_ERROR, e.getErrorCode());
         }
     }
 

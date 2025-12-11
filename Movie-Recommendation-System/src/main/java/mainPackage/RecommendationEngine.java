@@ -13,7 +13,7 @@ public class RecommendationEngine {
 	 * Generates movie recommendations for a user based on their liked movies
 	 * 
 	 * @param likedMovieIds List of movie IDs that the user likes
-	 * @param allMovies     Map of all movies (movieId -> mainPackage.Movie object)
+	 * @param allMovies     Map of all movies (movieId -> Movie object)
 	 * @return List of recommended movie titles
 	 */
 

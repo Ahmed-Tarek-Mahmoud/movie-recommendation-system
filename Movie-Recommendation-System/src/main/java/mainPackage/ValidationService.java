@@ -38,7 +38,7 @@ public class ValidationService implements UserValidator , MovieValidator{
             for (int j = i + 1; j < MovieIds.size(); j++) {
                 String idJ = MovieIds.get(j);
                 if (idI.equals(idJ)) {
-                    throw new AppExceptions("mainPackage.Movie ID numbers " + movies.get(j).getMovieId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
+                    throw new AppExceptions("Movie ID numbers " + movies.get(j).getMovieId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
                 }
             }
         }

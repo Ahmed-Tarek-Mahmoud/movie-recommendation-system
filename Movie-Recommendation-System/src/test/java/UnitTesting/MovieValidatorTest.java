@@ -54,7 +54,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "mainPackage.Movie ID letters "+ ID +" are wrong");
+                "Movie ID letters "+ ID +" are wrong");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "mainPackage.Movie ID letters "+ ID +" are wrong");
+                "Movie ID letters "+ ID +" are wrong");
     }
 
     @Test
@@ -78,7 +78,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "mainPackage.Movie ID letters "+ ID +" are wrong");
+                "Movie ID letters "+ ID +" are wrong");
     }
 
     @Test
@@ -90,7 +90,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "mainPackage.Movie ID letters "+ ID +" are wrong");
+                "Movie ID letters "+ ID +" are wrong");
     }
 
     @Test
@@ -102,7 +102,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1) ,
                 ErrorCode.MOVIE_ID_LETTERS_ERROR,
-                "mainPackage.Movie ID letters "+ ID +" are wrong");
+                "Movie ID letters "+ ID +" are wrong");
     }
 
     @Test
@@ -121,7 +121,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m2 = addMovie(title2 , ID2 , genres2);
         assertValidationException(() -> validationService.validateMovies(),
                 ErrorCode.MOVIE_ID_UNIQUE_ERROR,
-                "mainPackage.Movie ID numbers " + ID2 + " aren't unique");
+                "Movie ID numbers " + ID2 + " aren't unique");
     }
 
     @Test
@@ -147,7 +147,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
 
         assertValidationException(() -> validationService.validateMovies(),
                 ErrorCode.MOVIE_ID_UNIQUE_ERROR,
-                "mainPackage.Movie ID numbers " + ID3 + " aren't unique");
+                "Movie ID numbers " + ID3 + " aren't unique");
     }
 
 
@@ -161,7 +161,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1),
                 ErrorCode.MOVIE_TITLE_ERROR,
-                "mainPackage.Movie Title "+ title + " is wrong");
+                "Movie Title "+ title + " is wrong");
     }
 
     @Test
@@ -173,7 +173,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1),
                 ErrorCode.MOVIE_TITLE_ERROR,
-                "mainPackage.Movie Title "+ title + " is wrong");
+                "Movie Title "+ title + " is wrong");
     }
 
     @Test
@@ -185,7 +185,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1),
                 ErrorCode.MOVIE_TITLE_ERROR,
-                "mainPackage.Movie Title "+ title + " is wrong");
+                "Movie Title "+ title + " is wrong");
     }
 
     @Test
@@ -197,7 +197,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         Movie m1 = addMovie(title , ID , genres);
         assertValidationException(()-> validationService.ValidMovie(m1),
                 ErrorCode.MOVIE_TITLE_ERROR,
-                "mainPackage.Movie Title "+ title + " is wrong");
+                "Movie Title "+ title + " is wrong");
     }
 
     @Test

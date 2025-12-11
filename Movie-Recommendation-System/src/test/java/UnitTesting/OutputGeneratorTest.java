@@ -3,6 +3,7 @@ package UnitTesting;
 import mainPackage.Movie;
 import mainPackage.OutputGenerator;
 import mainPackage.RecommendationEngine;
+import mainPackage.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +16,6 @@ import java.security.MessageDigest;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
-
-import mainPackage.User;
 
 public class OutputGeneratorTest {
     OutputGenerator outputGen;
@@ -53,12 +52,12 @@ public class OutputGeneratorTest {
         Map<String, Movie> allMovies = new HashMap<>();
 
         for (int i = 0; i < 4; i++) {
-            allMovies.put(String.valueOf(i + 1), new Movie("mainPackage.Movie" + (i + 1), String.valueOf(i + 1), Arrays.asList("Action", "Comedy", "Drama")));
+            allMovies.put(String.valueOf(i + 1), new Movie("Movie" + (i + 1), String.valueOf(i + 1), Arrays.asList("Action", "Comedy", "Drama")));
         }
 
         List<String> likedMovieIds;
         for (int i = 0; i < 3; i++) {
-            users.add(new User("mainPackage.User" + (i + 1), String.valueOf(i + 1), Arrays.asList(String.valueOf(i + 1), String.valueOf(i + 2))));
+            users.add(new User("User" + (i + 1), String.valueOf(i + 1), Arrays.asList(String.valueOf(i + 1), String.valueOf(i + 2))));
         }
 
         Map<String, List<String>> movieRecommendations = recEngine.generateRecommendationsForUsers(users, allMovies);
@@ -68,8 +67,8 @@ public class OutputGeneratorTest {
             for (User user : users) {
                 String user_id = user.getUserId();
                 String user_name = user.getUserName();
-                outputFileTest.write("Current mainPackage.User: " + user_name + ", ID: " + user_id + "\n");
-                outputFileTest.write("mainPackage.Movie Recommendations: ");
+                outputFileTest.write("Current User: " + user_name + ", ID: " + user_id + "\n");
+                outputFileTest.write("Movie Recommendations: ");
                 List<String> userRecommendations = movieRecommendations.get(user_id);
                 for (int i = 0; i < userRecommendations.size(); i++) {
                     outputFileTest.write(userRecommendations.get(i));

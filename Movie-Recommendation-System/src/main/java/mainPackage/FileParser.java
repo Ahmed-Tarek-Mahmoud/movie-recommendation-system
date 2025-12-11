@@ -50,7 +50,7 @@ public class FileParser {
          *      Line 2: comma-separated genre names
          *
          * @param filePath the path to the movies file
-         * @param movies   a map where movieId → mainPackage.Movie object will be stored
+         * @param movies   a map where movieId → Movie object will be stored
          * @throws IOException if the file cannot be read
          */
         BufferedReader br = new BufferedReader(new FileReader(filePath));
