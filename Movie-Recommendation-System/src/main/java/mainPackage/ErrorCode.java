@@ -1,3 +1,5 @@
+package mainPackage;
+
 public enum ErrorCode {
     MOVIE_TITLE_ERROR(1),
     MOVIE_ID_LETTERS_ERROR(2),

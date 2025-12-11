@@ -1,3 +1,8 @@
+package UnitTesting;
+
+import mainPackage.Movie;
+import mainPackage.RecommendationEngine;
+import mainPackage.User;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -6,7 +11,7 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 /**
- * Unit Tests for RecommendationEngine
+ * Unit Tests for mainPackage.RecommendationEngine
  */
 
 public class RecommendationEngineTest {
@@ -142,7 +147,7 @@ public class RecommendationEngineTest {
 	@Test
 	public void testMovieWithNullGenres() {
 		Map<String, Movie> db = new HashMap<>(movieDatabase);
-		db.put("NG123", new Movie("No Genre Movie", "NG123", null));
+		db.put("NG123", new Movie("No Genre mainPackage.Movie", "NG123", null));
 
 		List<String> likedMovies = Arrays.asList("NG123");
 		List<String> recommendations = engine.generateRecommendations(likedMovies, db);

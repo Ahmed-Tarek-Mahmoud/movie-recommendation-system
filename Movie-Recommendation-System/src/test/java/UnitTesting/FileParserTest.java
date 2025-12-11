@@ -1,3 +1,9 @@
+package UnitTesting;
+
+import mainPackage.FileParser;
+import mainPackage.Movie;
+import mainPackage.User;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,17 +29,17 @@ public class FileParserTest {
 
         User michael = users.get("10");
         assertNotNull(michael);
-        assertEquals("Michael", michael.getUserName());
-        assertEquals("10", michael.getUserId());
-        assertEquals(4, michael.getLikedMovieIds().size());
+        Assert.assertEquals("Michael", michael.getUserName());
+        Assert.assertEquals("10", michael.getUserId());
+        Assert.assertEquals(4, michael.getLikedMovieIds().size());
         assertTrue(michael.getLikedMovieIds().contains("1"));
         assertTrue(michael.getLikedMovieIds().contains("20"));
 
         User alice = users.get("11");
         assertNotNull(alice);
-        assertEquals("Alice", alice.getUserName());
-        assertEquals("11", alice.getUserId());
-        assertEquals(2, alice.getLikedMovieIds().size());
+        Assert.assertEquals("Alice", alice.getUserName());
+        Assert.assertEquals("11", alice.getUserId());
+        Assert.assertEquals(2, alice.getLikedMovieIds().size());
         assertTrue(alice.getLikedMovieIds().contains("3"));
         assertTrue(alice.getLikedMovieIds().contains("4"));
     }
@@ -41,7 +47,7 @@ public class FileParserTest {
     @Test
     public void testLoadMovies() throws IOException {
 
-        Map<String,Movie> movies = new HashMap<>();
+        Map<String, Movie> movies = new HashMap<>();
         String path = new File("src/test/resources/movies.txt").getAbsolutePath();
 
         FileParser.loadMovies(path, movies);
@@ -51,9 +57,9 @@ public class FileParserTest {
         assertTrue(movies.containsKey("1"));
         assertEquals(5, movies.size());
         Movie matrix = movies.get("1");
-        assertEquals("The Matrix", matrix.getTitle());
+        Assert.assertEquals("The Matrix", matrix.getTitle());
         List<String> expectedGenres = Arrays.asList("Action", "Sci-Fi");
-        assertEquals(expectedGenres, matrix.getGenres());
+        Assert.assertEquals(expectedGenres, matrix.getGenres());
 
     }
 }

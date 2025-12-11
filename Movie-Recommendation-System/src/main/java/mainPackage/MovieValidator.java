@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package mainPackage;
+
 import java.util.List;
 
 public interface MovieValidator {
@@ -17,7 +18,7 @@ public interface MovieValidator {
             }
         }
         if(!movieId.startsWith(idLetters.toString()) || movieId.length() != (idLetters.length() + 3))
-            throw new AppExceptions("Movie ID letters "+ movieId +" are wrong", ErrorCode.MOVIE_ID_LETTERS_ERROR);
+            throw new AppExceptions("mainPackage.Movie ID letters "+ movieId +" are wrong", ErrorCode.MOVIE_ID_LETTERS_ERROR);
 
     }
 
@@ -25,7 +26,7 @@ public interface MovieValidator {
         String[] words = movieName.split(" ");
         for(String word: words){
             if(!Character.isUpperCase(word.charAt(0)))
-                throw new AppExceptions("Movie Title "+ movieName + " is wrong", ErrorCode.MOVIE_TITLE_ERROR);
+                throw new AppExceptions("mainPackage.Movie Title "+ movieName + " is wrong", ErrorCode.MOVIE_TITLE_ERROR);
         }
     }
 

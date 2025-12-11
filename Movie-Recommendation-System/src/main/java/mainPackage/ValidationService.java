@@ -1,3 +1,5 @@
+package mainPackage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,19 +38,19 @@ public class ValidationService implements UserValidator , MovieValidator{
             for (int j = i + 1; j < MovieIds.size(); j++) {
                 String idJ = MovieIds.get(j);
                 if (idI.equals(idJ)) {
-                    throw new AppExceptions("Movie ID numbers " + movies.get(j).getMovieId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
+                    throw new AppExceptions("mainPackage.Movie ID numbers " + movies.get(j).getMovieId() + " aren't unique" , ErrorCode.MOVIE_ID_UNIQUE_ERROR);
                 }
             }
         }
     }
 
-    void ensureUserIdUniqueness() {
+    public void ensureUserIdUniqueness() {
         for (int i = 0; i < UserIds.size(); i++) {
             String idI = UserIds.get(i);
             for (int j = i + 1; j < UserIds.size(); j++) {
                 String idJ = UserIds.get(j);
                 if (idI.equals(idJ)) {
-                    throw new AppExceptions("User ID numbers " + users.get(j).getUserId() + " aren't unique" , ErrorCode.USER_ID_UNIQUE_ERROR);
+                    throw new AppExceptions("mainPackage.User ID numbers " + users.get(j).getUserId() + " aren't unique" , ErrorCode.USER_ID_UNIQUE_ERROR);
                 }
             }
         }

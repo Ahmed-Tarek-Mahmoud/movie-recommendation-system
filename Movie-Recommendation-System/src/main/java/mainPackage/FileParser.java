@@ -1,3 +1,5 @@
+package mainPackage;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +17,7 @@ public class FileParser {
          *      Line 2: comma-separated liked movie IDs
          *
          * @param filePath the path to the users file
-         * @param users    a map where userId → User object will be stored
+         * @param users    a map where userId → mainPackage.User object will be stored
          * @throws IOException if the file cannot be read
          */
         BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -48,7 +50,7 @@ public class FileParser {
          *      Line 2: comma-separated genre names
          *
          * @param filePath the path to the movies file
-         * @param movies   a map where movieId → Movie object will be stored
+         * @param movies   a map where movieId → mainPackage.Movie object will be stored
          * @throws IOException if the file cannot be read
          */
         BufferedReader br = new BufferedReader(new FileReader(filePath));
