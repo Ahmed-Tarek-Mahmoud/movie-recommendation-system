@@ -1,10 +1,12 @@
+package mainPackage;
+
 import java.util.List;
 
 /**
- * User class representing a user entity
+ * mainPackage.User class representing a user entity
  */
 
-class User {
+public class User {
 	private String userName;
 	private String userId;
 	private List<String> likedMovieIds;
@@ -29,6 +31,6 @@ class User {
 
 	@Override
 	public String toString() {
-		return "User{name='" + userName + "', id='" + userId + "', likedMovies=" + likedMovieIds + "}";
+		return "mainPackage.User{name='" + userName + "', id='" + userId + "', likedMovies=" + likedMovieIds + "}";
 	}
 }

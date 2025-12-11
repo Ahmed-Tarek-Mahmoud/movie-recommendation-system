@@ -1,3 +1,5 @@
+package mainPackage;
+
 public class AppExceptions extends RuntimeException {
     private final ErrorCode errorCode;
 

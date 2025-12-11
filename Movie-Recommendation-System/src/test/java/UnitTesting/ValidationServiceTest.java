@@ -1,3 +1,6 @@
+package UnitTesting;
+
+import mainPackage.*;
 import org.junit.Assert;
 import org.junit.Before;
 

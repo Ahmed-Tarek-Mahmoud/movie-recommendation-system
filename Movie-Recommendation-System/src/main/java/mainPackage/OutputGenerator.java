@@ -1,3 +1,5 @@
+package mainPackage;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +16,8 @@ public class OutputGenerator {
             for(User user : users) {
                 String user_id = user.getUserId();
                 String user_name = user.getUserName();
-                outputFile.write("Current User: " + user_name + ", ID: " + user_id + "\n");
-                outputFile.write("Movie Recommendations: ");
+                outputFile.write("Current mainPackage.User: " + user_name + ", ID: " + user_id + "\n");
+                outputFile.write("mainPackage.Movie Recommendations: ");
                 List<String> userRecommendations = movieRecommendations.get(user_id);
                 for (int i=0; i<userRecommendations.size(); i++) {
                     outputFile.write(userRecommendations.get(i));
