@@ -62,7 +62,7 @@ public class UserValidatorTest extends ValidationServiceTest {
         User u1 = addUser(userName1, userId1, null);
 
         String userName2 = "Bob";
-        String userId2 = "12345678A"; 
+        String userId2 = "12345678A"; // Duplicate ID
         User u2 = addUser(userName2, userId2, null);
         
         assertValidationException(() -> validationService.validateUsers(),
