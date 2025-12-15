@@ -9,12 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserValidatorTest extends ValidationServiceTest {
 
-    // Valid Path - Covers all 'False' branches
+    // Valid Path 
     @Test
     public void testValidUser() {
-        // Covers: userName != null, !userName.isEmpty(), userName.charAt(0) != ' ', 
-        //         userName has only letters/spaces, userId != null, userId.length() == 9, 
-        //         userId is all digits or digits + one letter at end.
         String userName = "Alice Smith";
         String userId = "12345678A";
         User u1 = addUser(userName, userId, null);
