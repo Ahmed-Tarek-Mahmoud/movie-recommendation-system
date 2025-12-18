@@ -1,5 +1,6 @@
 package IntegrationTesting.BottomUp;
 
+import Regression.Regression;
 import mainPackage.FileParser;
 import mainPackage.Movie;
 import mainPackage.User;
@@ -13,6 +14,8 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import org.junit.experimental.categories.Category;
+
 
 /**
  * This level is responsible to test the bottom most level of our program
@@ -49,6 +52,7 @@ public class Level0 {
     }
 
     @Test
+    @Category(Regression.class)
     public void testLoadUsers_EmptyLines() {
         String path = new File("src/test/resources/BottomUp/user_empty_lines.txt").getAbsolutePath();
         try{
