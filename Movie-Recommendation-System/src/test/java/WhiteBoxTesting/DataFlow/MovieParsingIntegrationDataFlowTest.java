@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -19,11 +20,11 @@ public class MovieParsingIntegrationDataFlowTest extends DataFlowTestBase {
             "Inception,I002\nAction,Thriller,Sci-Fi\n" +
             "Titanic,T003\nRomance,Drama\n"
         );
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertEquals(3, movies.size());
-        assertEquals("The Matrix", movies.get("TM001").getTitle());
-        assertEquals("Inception", movies.get("I002").getTitle());
-        assertEquals("Titanic", movies.get("T003").getTitle());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertEquals(3, movieList.size());
+        assertEquals("The Matrix", movieList.get(0).getTitle());
+        assertEquals("Inception", movieList.get(1).getTitle());
+        assertEquals("Titanic", movieList.get(2).getTitle());
     }
 
     @Test
@@ -33,41 +34,40 @@ public class MovieParsingIntegrationDataFlowTest extends DataFlowTestBase {
             "Movie2,M002\nDrama\n" +
             "Movie3,M003\nComedy\n"
         );
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertEquals(3, movies.size());
-        movies.clear();
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertEquals(3, movieList.size());
         // second load should not fail if resources were closed properly
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertEquals(3, movies.size());
+        List<Movie> movieList2 = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertEquals(3, movieList2.size());
     }
 
     @Test
     public void testEmptyFileProducesNoMovies() throws IOException {
         writeToFile("");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertTrue(movies.isEmpty());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertTrue(movieList.isEmpty());
     }
 
     @Test
     public void testSingleMovieMinimalPath() throws IOException {
         writeToFile("Solo,S001\nAction\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertEquals(1, movies.size());
-        assertEquals("Solo", movies.get("S001").getTitle());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertEquals(1, movieList.size());
+        assertEquals("Solo", movieList.get(0).getTitle());
     }
 
     @Test
     public void testSpecialCharactersInName() throws IOException {
         writeToFile("Movie: The Sequel,MTS001\nAction\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        assertEquals("Movie: The Sequel", movies.get("MTS001").getTitle());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        assertEquals("Movie: The Sequel", movieList.get(0).getTitle());
     }
 
     @Test
     public void testIntegration_ValidationPassesForValidMovies() throws IOException {
         writeToFile("The Matrix,TM001\nAction,Sci-Fi\nInception,I002\nAction,Thriller\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        ValidationService validator = new ValidationService(new ArrayList<>(movies.values()), new ArrayList<>());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        ValidationService validator = new ValidationService(movieList, new ArrayList<>());
         assertDoesNotThrow(() -> validator.validateMovies(), "Validation should pass for valid movies");
     }
 }

@@ -14,8 +14,9 @@ public class MovieObjectDataFlowTest extends DataFlowTestBase {
     @Test
     public void testConstructorToGetters() throws IOException {
         writeToFile("The Matrix,TM001\nAction,Sci-Fi\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("TM001");
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("TM001")).findFirst().orElse(null);
+        assertNotNull(movie);
         assertEquals("The Matrix", movie.getTitle());
         assertEquals("TM001", movie.getMovieId());
         assertEquals(2, movie.getGenres().size());
@@ -24,8 +25,9 @@ public class MovieObjectDataFlowTest extends DataFlowTestBase {
     @Test
     public void testToStringUsesFields() throws IOException {
         writeToFile("Inception,I001\nAction\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("I001");
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("I001")).findFirst().orElse(null);
+        assertNotNull(movie);
         String movieString = movie.toString();
         assertTrue(movieString.contains("Inception"));
         assertTrue(movieString.contains("I001"));
@@ -35,8 +37,9 @@ public class MovieObjectDataFlowTest extends DataFlowTestBase {
     @Test
     public void testGenresOrderPreserved() throws IOException {
         writeToFile("Inception,I001\nAction,Thriller,Sci-Fi,Drama\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("I001");
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("I001")).findFirst().orElse(null);
+        assertNotNull(movie);
         List<String> genres = movie.getGenres();
         assertEquals("Action", genres.get(0));
         assertEquals("Thriller", genres.get(1));
