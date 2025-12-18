@@ -49,10 +49,10 @@ public class OutputGeneratorTest {
     @Test
     public void printRecommendationTest() throws IOException {
         List<User> users = new ArrayList<>();
-        Map<String, Movie> allMovies = new HashMap<>();
+        List<Movie> allMovies = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
-            allMovies.put(String.valueOf(i + 1), new Movie("Movie" + (i + 1), String.valueOf(i + 1), Arrays.asList("Action", "Comedy", "Drama")));
+            allMovies.add(new Movie("Movie" + (i + 1), String.valueOf(i + 1), Arrays.asList("Action", "Comedy", "Drama")));
         }
 
         List<String> likedMovieIds;
