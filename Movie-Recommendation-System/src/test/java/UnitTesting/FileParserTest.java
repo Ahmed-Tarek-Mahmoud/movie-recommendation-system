@@ -1,9 +1,12 @@
 package UnitTesting;
 
+import Regression.Regression;
 import mainPackage.FileParser;
 import mainPackage.Movie;
 import mainPackage.User;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -38,6 +41,7 @@ public class FileParserTest {
     }
 
     @Test
+    @Category(Regression.class)
     public void testLoadMovies() throws IOException {
 
         String path = new File("src/test/resources/movies.txt").getAbsolutePath();

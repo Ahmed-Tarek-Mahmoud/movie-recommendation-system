@@ -4,6 +4,9 @@ import mainPackage.ErrorCode;
 import mainPackage.Movie;
 import org.junit.Test;
 
+import Regression.Regression;
+import org.junit.experimental.categories.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -234,6 +237,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
     }
 
     @Test
+    @Category(Regression.class)
     public void testAllCapMovieTitle(){
         String title = "EGY";
         String ID = "EGY001";
@@ -244,6 +248,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
     }
 
     @Test
+    @Category(Regression.class)
     public void testAllCapMovieTitle2(){
         String title = "EGY";
         String ID = "E001";
