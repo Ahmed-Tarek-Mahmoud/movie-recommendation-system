@@ -1,5 +1,6 @@
 package IntegrationTesting.BottomUp;
 
+import Regression.Regression;
 import mainPackage.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import java.util.List;
 
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.experimental.categories.Category;
+
 
 public class Level1 {
 
@@ -53,6 +56,7 @@ public class Level1 {
     }
 
     @Test
+    @Category(Regression.class)
     public void test_Movie_errorOrder(){
         String path = new File("src/test/resources/BottomUp/movies_error_order.txt").getAbsolutePath();
 
@@ -69,6 +73,7 @@ public class Level1 {
     }
 
     @Test
+    @Category(Regression.class)
     public void test_User_errorOrder(){
         String path = new File("src/test/resources/BottomUp/users_error_order.txt").getAbsolutePath();
 

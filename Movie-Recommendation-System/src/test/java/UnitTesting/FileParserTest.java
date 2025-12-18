@@ -41,7 +41,6 @@ public class FileParserTest {
     }
 
     @Test
-    @Category(Regression.class)
     public void testLoadMovies() throws IOException {
 
         String path = new File("src/test/resources/movies.txt").getAbsolutePath();
