@@ -2,24 +2,19 @@ package WhiteBoxTesting.DataFlow;
 
 import mainPackage.AppExceptions;
 import mainPackage.ErrorCode;
-import mainPackage.Movie;
 import org.junit.Before;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
 public abstract class DataFlowTestBase {
-    protected Map<String, Movie> movies;
     protected File tempFile;
 
     @Before
     public void setUp() throws IOException {
-        movies = new HashMap<>();
         tempFile = File.createTempFile("test_movies", ".txt");
         tempFile.deleteOnExit();
     }

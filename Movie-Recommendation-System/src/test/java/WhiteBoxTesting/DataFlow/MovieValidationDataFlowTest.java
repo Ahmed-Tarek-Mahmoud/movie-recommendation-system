@@ -18,18 +18,20 @@ public class MovieValidationDataFlowTest extends DataFlowTestBase {
     @Test
     public void testMovieNameValidation_valid() throws IOException {
         writeToFile("Interstellar,I001\nSci-Fi\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("I001");
-        ValidationService validator = new ValidationService(new ArrayList<>(movies.values()), new ArrayList<>());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("I001")).findFirst().orElse(null);
+        assertNotNull(movie);
+        ValidationService validator = new ValidationService(new ArrayList<>(movieList), new ArrayList<>());
         assertDoesNotThrow(() -> validator.ValidMovie(movie), "Valid movie should not throw");
     }
 
     @Test
     public void testMovieNameValidation_invalid() throws IOException {
         writeToFile("interstellar,I001\nSci-Fi\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("I001");
-        ValidationService validator = new ValidationService(new ArrayList<>(movies.values()), new ArrayList<>());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("I001")).findFirst().orElse(null);
+        assertNotNull(movie);
+        ValidationService validator = new ValidationService(new ArrayList<>(movieList), new ArrayList<>());
         try {
             validator.ValidMovie(movie);
             fail("Should throw validation exception for invalid movie name");
@@ -41,8 +43,7 @@ public class MovieValidationDataFlowTest extends DataFlowTestBase {
     @Test
     public void testMovieIdValidation_invalidLetters() throws IOException {
         writeToFile("The Matrix,xyz001\nAction\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        List<Movie> movieList = new ArrayList<>(movies.values());
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
         ValidationService validator = new ValidationService(movieList, new ArrayList<>());
         try {
             validator.validateMovies();
@@ -58,15 +59,16 @@ public class MovieValidationDataFlowTest extends DataFlowTestBase {
         // The list is NOT empty (it has one element: ""), so MovieGenresValid won't throw
         // This test verifies that the current implementation doesn't validate empty genre strings
         writeToFile("Inception,I001\n\n");
-        FileParser.loadMovies(tempFile.getAbsolutePath(), movies);
-        Movie movie = movies.get("I001");
+        List<Movie> movieList = FileParser.loadMovies(tempFile.getAbsolutePath());
+        Movie movie = movieList.stream().filter(m -> m.getMovieId().equals("I001")).findFirst().orElse(null);
+        assertNotNull(movie);
         
         // Verify that the genres list contains one empty string element
         assertEquals(1, movie.getGenres().size());
         assertEquals("", movie.getGenres().get(0));
         
         // The current validation only checks if list is empty, not if elements are empty
-        ValidationService validator = new ValidationService(new ArrayList<>(movies.values()), new ArrayList<>());
+        ValidationService validator = new ValidationService(new ArrayList<>(movieList), new ArrayList<>());
         // This will NOT throw an exception because the list is not empty
         assertDoesNotThrow(() -> validator.ValidMovie(movie), 
             "Current implementation doesn't validate empty genre strings");
@@ -74,10 +76,6 @@ public class MovieValidationDataFlowTest extends DataFlowTestBase {
 
     @Test
     public void testDuplicateMovieIdDetection() throws IOException {
-        // Note: FileParser uses a Map, so duplicate IDs overwrite previous entries
-        // The Map will only contain the last movie with that ID
-        // So we need to test that the validator checks for uniqueness across the actual movie list
-
         // Create two movies with same ID manually to test uniqueness validation
         Movie movie1 = new Movie("Inception", "I001", List.of("Action"));
         Movie movie2 = new Movie("Interstellar", "I001", List.of("Sci-Fi"));
