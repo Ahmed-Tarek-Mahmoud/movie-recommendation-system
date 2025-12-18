@@ -1,9 +1,11 @@
 package UnitTesting;
 
+import Regression.Regression;
 import mainPackage.AppExceptions;
 import mainPackage.ErrorCode;
 import mainPackage.User;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;
 
@@ -133,6 +135,7 @@ public class UserIdValidatorTest extends ValidationServiceTest {
     }
 
     @Test
+    @Category(Regression.class)
     public void testUserIdNotUnique() {
         // invalid: user Ids are the same
         User user1 = new User("ahmed","123456789",new ArrayList<>());

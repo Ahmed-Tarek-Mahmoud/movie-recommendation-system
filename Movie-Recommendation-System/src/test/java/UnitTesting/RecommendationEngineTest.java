@@ -1,10 +1,12 @@
 package UnitTesting;
 
+import Regression.Regression;
 import mainPackage.Movie;
 import mainPackage.RecommendationEngine;
 import mainPackage.User;
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.experimental.categories.Category;
 
 import java.util.*;
 
@@ -132,6 +134,7 @@ public class RecommendationEngineTest {
 	}
 
 	@Test
+    @Category(Regression.class)
 	public void testNullMovieInDatabase() {
 		Map<String, Movie> dbWithNull = new HashMap<>(movieDatabase);
 		dbWithNull.put("NULL123", null);
