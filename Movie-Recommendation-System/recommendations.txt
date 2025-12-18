@@ -1,4 +1,2 @@
 Current User: Michael, ID: 123456789
-Movie Recommendations: Avengers: Endgame, Inception
-Current User: Alice, ID: 987654321
-Movie Recommendations: Inception, The Matrix
+Movie Recommendations: Avengers: Endgame
