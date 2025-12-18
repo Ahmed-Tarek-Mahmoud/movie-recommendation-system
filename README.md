@@ -36,7 +36,7 @@ The output file `recommendations.txt` contains:
 2. Second line: recommended movie titles, separated by commas.  
 3. Repeat for each user.
 
-### Recommendation Logic
+### 🧠 Recommendation Logic
 
 - If a user likes a movie from genre X, the system recommends all other movies in that genre.  
 - If any input is invalid, the output contains the first error encountered:
@@ -58,6 +58,7 @@ The output file `recommendations.txt` contains:
 - Group project: 6 students per group, one submission per group.
 
 ## 📂 Project Structure
+```
 movie-recommendation-system/
 ├── src/
 │   ├── main/
@@ -89,5 +90,6 @@ movie-recommendation-system/
 ├── README.md
 └── .gitignore
 
+```
 
 
