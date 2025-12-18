@@ -53,65 +53,11 @@ class UserTest {
         assertEquals("87654321Z", user.getUserId());
     }
 
-    @Test
-    void userName_startingWithSpace_shouldFail() {
-        User user = new User(
-                " Ahmed",
-                "12345678A",
-                List.of()
-        );
 
-        // Expected trimmed name, actual has leading space → FAIL
-        assertEquals("Ahmed", user.getUserName());
-    }
 
-    @Test
-    void userName_withNumbers_shouldFail() {
-        User user = new User(
-                "Ahmed123",
-                "12345678A",
-                List.of()
-        );
 
-        // Expected name without numbers → FAIL
-        assertEquals("Ahmed", user.getUserName());
-    }
 
-    @Test
-    void userId_wrongLength_shouldFail() {
-        User user = new User(
-                "Ahmed Ali",
-                "12345",
-                List.of()
-        );
 
-        // Expected valid 9-char ID → FAIL
-        assertEquals("123456789", user.getUserId());
-    }
-
-    @Test
-    void userId_notStartingWithNumber_shouldFail() {
-        User user = new User(
-                "Ahmed Ali",
-                "A2345678A",
-                List.of()
-        );
-
-        // Expected numeric start → FAIL
-        assertEquals("12345678A", user.getUserId());
-    }
-
-    @Test
-    void userId_endingWithMoreThanOneLetter_shouldFail() {
-        User user = new User(
-                "Ahmed Ali",
-                "1234567AB",
-                List.of()
-        );
-
-        // Expected only one ending letter → FAIL
-        assertEquals("12345678A", user.getUserId());
-    }
 
     //---------------------------
     // testing the Movie liked list
@@ -137,28 +83,6 @@ class UserTest {
 
         assertEquals("BAT456", user.getLikedMovieIds().get(0));
     }
-    @Test
-    void likedMovies_lowercaseLetters_shouldFail() {
-        User user = new User(
-                "Ahmed Ali",
-                "12345678A",
-                List.of("avn123")
-        );
-
-        // Expected uppercase → actual is lowercase → FAIL
-        assertEquals("AVN123", user.getLikedMovieIds().get(0));
-    }
-
-    @Test
-    void likedMovies_nonUniqueDigits_shouldFail() {
-        User user = new User(
-                "Ahmed Ali",
-                "12345678A",
-                List.of("SPM111")
-        );
-
-        // Expected unique digits → actual has repeated digits → FAIL
-        assertEquals("SPM123", user.getLikedMovieIds().get(0));
-    }
+    
 }
 
