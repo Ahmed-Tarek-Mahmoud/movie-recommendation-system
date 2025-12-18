@@ -12,57 +12,50 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FileParserTest {
 
     @Test
     public void testLoadUsers() throws IOException {
 
-        Map<String, User> users = new HashMap<>();
-
         String path = new File("src/test/resources/users.txt").getAbsolutePath();
 
-        FileParser.loadUsers(path, users);
+        List<User> users = FileParser.loadUsers(path);
 
         assertEquals(2, users.size());
 
-        User michael = users.get("10");
+        User michael = users.stream().filter(u -> u.getUserId().equals("123456789")).findFirst().orElse(null);
         assertNotNull(michael);
         assertEquals("Michael", michael.getUserName());
-        assertEquals("10", michael.getUserId());
-        assertEquals(4, michael.getLikedMovieIds().size());
-        assertTrue(michael.getLikedMovieIds().contains("1"));
-        assertTrue(michael.getLikedMovieIds().contains("20"));
+        assertEquals("123456789", michael.getUserId());
+        assertEquals(1, michael.getLikedMovieIds().size());
+        assertTrue(michael.getLikedMovieIds().contains("TM001"));
 
-        User alice = users.get("11");
+        User alice = users.stream().filter(u -> u.getUserId().equals("987654321")).findFirst().orElse(null);
         assertNotNull(alice);
         assertEquals("Alice", alice.getUserName());
-        assertEquals("11", alice.getUserId());
-        assertEquals(2, alice.getLikedMovieIds().size());
-        assertTrue(alice.getLikedMovieIds().contains("3"));
-        assertTrue(alice.getLikedMovieIds().contains("4"));
+        assertEquals("987654321", alice.getUserId());
+        assertEquals(1, alice.getLikedMovieIds().size());
+        assertTrue(alice.getLikedMovieIds().contains("AE004"));
     }
 
     @Test
     @Category(Regression.class)
     public void testLoadMovies() throws IOException {
 
-        Map<String,Movie> movies = new HashMap<>();
         String path = new File("src/test/resources/movies.txt").getAbsolutePath();
 
-        FileParser.loadMovies(path, movies);
+        List<Movie> movies = FileParser.loadMovies(path);
         assertFalse(movies.isEmpty());
 
-
-        assertTrue(movies.containsKey("1"));
         assertEquals(5, movies.size());
-        Movie matrix = movies.get("1");
+        Movie matrix = movies.stream().filter(m -> m.getMovieId().equals("TM001")).findFirst().orElse(null);
+        assertNotNull(matrix);
         assertEquals("The Matrix", matrix.getTitle());
         List<String> expectedGenres = Arrays.asList("Action", "Sci-Fi");
         assertEquals(expectedGenres, matrix.getGenres());
 
     }
 }
+

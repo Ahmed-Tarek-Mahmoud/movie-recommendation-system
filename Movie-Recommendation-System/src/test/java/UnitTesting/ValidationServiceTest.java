@@ -27,6 +27,12 @@ public abstract class ValidationServiceTest {
         return movie;
     }
 
+    protected User addUser(String userName, String userId, List<String> likedMovieIds) {
+        User user = new User(userName, userId, likedMovieIds);
+        users.add(user);
+        return user;
+    }
+    
     protected void assertValidationException(Runnable runnable, ErrorCode expectedErrorCode, String expectedMessage) {
         try {
             runnable.run();

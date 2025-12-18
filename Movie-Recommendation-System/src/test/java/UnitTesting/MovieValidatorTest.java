@@ -10,6 +10,8 @@ import org.junit.experimental.categories.Category;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class MovieValidatorTest extends ValidationServiceTest {
     @Test
     public void testMovieIDValid1(){
@@ -18,7 +20,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         List<String> genres = new ArrayList<String>();
         genres.add("Sci-Fi");
         Movie m1 = addMovie(title , ID , genres);
-        validationService.ValidMovie(m1);
+        assertDoesNotThrow(()-> validationService.ValidMovie(m1));
     }
 
     @Test
@@ -28,7 +30,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         List<String> genres = new ArrayList<>();
         genres.add("Fantasy");
         Movie m1 = addMovie(title , ID , genres);
-        validationService.ValidMovie(m1);
+        assertDoesNotThrow(()-> validationService.ValidMovie(m1));
     }
 
     @Test
@@ -45,7 +47,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         List<String> genres2 = new ArrayList<String>();
         genres2.add("Cartoon");
         Movie m2 = addMovie(title2 , ID2 , genres2);
-        validationService.validateMovies();
+        assertDoesNotThrow(()-> validationService.validateMovies());
     }
 
     @Test
@@ -242,7 +244,7 @@ public class MovieValidatorTest extends ValidationServiceTest {
         List<String> genres = new ArrayList<String>();
         genres.add("Fantasy");
         Movie m1 = addMovie(title , ID , genres);
-        validationService.ValidMovie(m1);
+        assertDoesNotThrow(()-> validationService.ValidMovie(m1));
     }
 
     @Test

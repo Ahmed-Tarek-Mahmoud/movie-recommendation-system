@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class OutputGenerator {
 
-    public void printRecommendation (List<User> users, Map<String, Movie> allMovies) throws IOException {
+    public void printRecommendation (List<User> users, List<Movie> allMovies) throws IOException {
         RecommendationEngine recEngine = new RecommendationEngine();
         Map<String, List<String>> movieRecommendations = recEngine.generateRecommendationsForUsers(users, allMovies);
 
@@ -34,3 +34,4 @@ public class OutputGenerator {
     }
 
 }
+
