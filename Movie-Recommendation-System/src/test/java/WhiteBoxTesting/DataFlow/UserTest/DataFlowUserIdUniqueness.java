@@ -14,7 +14,7 @@ public class DataFlowUserIdUniqueness extends DataFlowUserValidation {
     public void testUserIdUnique1() {
         // valid: user Ids are unique
 
-        validationService.validateUsers();
+        assertDoesNotThrow(()->validationService.validateUsers());
     }
     @Test
     public void testUserIdUnique2() {
