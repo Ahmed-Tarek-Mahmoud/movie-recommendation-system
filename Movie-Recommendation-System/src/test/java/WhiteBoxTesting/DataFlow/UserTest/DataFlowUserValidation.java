@@ -1,4 +1,4 @@
-package UnitTesting;
+package WhiteBoxTesting.DataFlow.UserTest;
 
 import mainPackage.*;
 import org.junit.Assert;
@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.fail;
-
-public abstract class ValidationServiceTest {
+public abstract class DataFlowUserValidation {
     protected ValidationService validationService;
     protected List<Movie> movies;
     protected List<User> users;
@@ -27,12 +26,6 @@ public abstract class ValidationServiceTest {
         return movie;
     }
 
-    protected User addUser(String userName, String userId, List<String> likedMovieIds) {
-        User user = new User(userName, userId, likedMovieIds);
-        users.add(user);
-        return user;
-    }
-    
     protected void assertValidationException(Runnable runnable, ErrorCode expectedErrorCode, String expectedMessage) {
         try {
             runnable.run();
