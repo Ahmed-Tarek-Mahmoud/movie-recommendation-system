@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class DataFlowUserIdValidation extends DataFlowUserValidation {
 
     @Test
@@ -67,7 +67,7 @@ public class DataFlowUserIdValidation extends DataFlowUserValidation {
         // valid: 9 digits Id
         User user = new User("ahmed","123456789",new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        assertDoesNotThrow(() -> validationService.validateUsers());
         assertEquals("123456789",user.getUserId());
     }
 }

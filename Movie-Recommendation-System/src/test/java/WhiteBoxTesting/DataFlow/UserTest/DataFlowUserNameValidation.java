@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class DataFlowUserNameValidation extends DataFlowUserValidation {
 
     @Test
@@ -67,7 +67,7 @@ public class DataFlowUserNameValidation extends DataFlowUserValidation {
 
         User user = new User("ahmed","123456789",new ArrayList<>());
         users.add(user);
-        validationService.validateUsers();
+        assertDoesNotThrow(() -> validationService.validateUsers());
         assertEquals("ahmed",user.getUserName());
     }
 

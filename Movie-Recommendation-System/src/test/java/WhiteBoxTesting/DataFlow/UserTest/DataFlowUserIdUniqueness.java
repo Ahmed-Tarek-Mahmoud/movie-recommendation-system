@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class DataFlowUserIdUniqueness extends DataFlowUserValidation {
     @Test
     public void testUserIdUnique1() {
@@ -21,7 +21,8 @@ public class DataFlowUserIdUniqueness extends DataFlowUserValidation {
         // valid: user Ids are unique
         User user1 = new User("ahmed","123456789",new ArrayList<>());
         users.add(user1);
-        validationService.validateUsers();
+        assertDoesNotThrow(() -> validationService.validateUsers());
+
     }
     @Test
     public void testUserIdUnique3() {
@@ -30,7 +31,7 @@ public class DataFlowUserIdUniqueness extends DataFlowUserValidation {
         users.add(user1);
         User user2 = new User("ahmed","12345678A",new ArrayList<>());
         users.add(user2);
-        validationService.validateUsers();
+        assertDoesNotThrow(() -> validationService.validateUsers());
     }
     @Test
     public void testUserIdUnique4() {
@@ -41,7 +42,7 @@ public class DataFlowUserIdUniqueness extends DataFlowUserValidation {
         users.add(user2);
         User user3 = new User("ahmed","987654321",new ArrayList<>());
         users.add(user3);
-        validationService.validateUsers();
+        assertDoesNotThrow(() -> validationService.validateUsers());
     }
 
     @Test
