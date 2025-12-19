@@ -7,9 +7,24 @@ import java.util.Map;
 
 public class OutputGenerator {
 
+    private RecommendationEngine recommendationEngine;
+
+    public OutputGenerator(){
+
+    }
+
+    public OutputGenerator(RecommendationEngine recommendationEngine){
+        this.recommendationEngine = recommendationEngine;
+    }
+
+
     public void printRecommendation (List<User> users, List<Movie> allMovies) throws IOException {
-        RecommendationEngine recEngine = new RecommendationEngine();
-        Map<String, List<String>> movieRecommendations = recEngine.generateRecommendationsForUsers(users, allMovies);
+
+        if(recommendationEngine == null) {
+            recommendationEngine = new RecommendationEngine();
+        }
+
+        Map<String, List<String>> movieRecommendations = recommendationEngine.generateRecommendationsForUsers(users, allMovies);
 
         try {
             FileWriter outputFile = new FileWriter ("recommendations.txt");

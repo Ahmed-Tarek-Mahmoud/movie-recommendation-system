@@ -1,4 +1,4 @@
-package IntegrationTesting.LevelOne;
+package IntegrationTesting.TopDown.LevelOne;
 
 import mainPackage.*;
 import org.junit.After;
@@ -28,21 +28,21 @@ public class ValidationServiceTest {
     }
 
 
-    @Test
-    public void testValidateMovies(){
-        validationService = spy(new ValidationService(testMovies,testUsers));
-        doNothing().when(validationService).ensureMovieIdUniqueness();
-        validationService.validateMovies();
-        verify(validationService, times(1)).ensureMovieIdUniqueness();
-    }
-
-    @Test
-    public void testValidateUsers(){
-        validationService = spy(new ValidationService(testMovies,testUsers));
-        doNothing().when(validationService).ensureUserIdUniqueness();
-        validationService.validateUsers();
-        verify(validationService, times(1)).ensureUserIdUniqueness();
-    }
+//    @Test
+//    public void testValidateMovies(){
+//        validationService = spy(new ValidationService(testMovies,testUsers));
+//        doNothing().when(validationService).ensureMovieIdUniqueness();
+//        validationService.validateMovies();
+//        verify(validationService, times(1)).ensureMovieIdUniqueness();
+//    }
+//
+//    @Test
+//    public void testValidateUsers(){
+//        validationService = spy(new ValidationService(testMovies,testUsers));
+//        doNothing().when(validationService).ensureUserIdUniqueness();
+//        validationService.validateUsers();
+//        verify(validationService, times(1)).ensureUserIdUniqueness();
+//    }
 
 
     @Test

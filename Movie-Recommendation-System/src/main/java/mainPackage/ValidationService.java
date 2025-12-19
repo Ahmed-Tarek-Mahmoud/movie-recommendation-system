@@ -54,7 +54,7 @@ public class ValidationService implements UserValidator , MovieValidator{
 //        ensureUserIdUniqueness();
     }
 
-    private void ensureMovieIdUniqueness() {
+    public void ensureMovieIdUniqueness() {
         for (int i = 0; i < MovieIds.size(); i++) {
             String idI = MovieIds.get(i);
             for (int j = i + 1; j < MovieIds.size(); j++) {

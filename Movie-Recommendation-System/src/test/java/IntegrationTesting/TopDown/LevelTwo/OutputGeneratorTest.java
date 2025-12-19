@@ -1,4 +1,4 @@
-package IntegrationTesting.LevelTwo;
+package IntegrationTesting.TopDown.LevelTwo;
 
 import mainPackage.OutputGenerator;
 import mainPackage.RecommendationEngine;
@@ -19,10 +19,10 @@ public class OutputGeneratorTest {
         RecommendationEngine engine = mock(RecommendationEngine.class);
         OutputGenerator outputGenerator = new OutputGenerator(engine);
 
-        outputGenerator.printRecommendation(anyList(), anyMap());
+        outputGenerator.printRecommendation(anyList(), anyList());
 
         verify(engine, times(1))
-                .generateRecommendationsForUsers(anyList(), anyMap());
+                .generateRecommendationsForUsers(anyList(), anyList());
     }
 
 }

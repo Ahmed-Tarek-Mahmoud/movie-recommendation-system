@@ -1,4 +1,4 @@
-package IntegrationTesting.LevelTwo;
+package IntegrationTesting.TopDown.LevelTwo;
 
 import mainPackage.Movie;
 import mainPackage.OutputGenerator;
@@ -18,11 +18,11 @@ public class RecommendationEngineTest {
 
     private RecommendationEngine recommendationEngine;
     private List<User> users;
-    Map<String, Movie> allMovies;
+    private List<Movie> allMovies;
 
     @Before
     public void setupLists(){
-        allMovies = new HashMap<>();
+        allMovies = new ArrayList<>();
         users = new ArrayList<>();
     }
 
@@ -35,11 +35,11 @@ public class RecommendationEngineTest {
 
         doReturn(new ArrayList<>())
                 .when(recommendationEngine)
-                .generateRecommendations(anyList(), anyMap());
+                .generateRecommendations(anyList(), anyList());
 
         recommendationEngine.generateRecommendationsForUsers(users, allMovies);
 
         verify(recommendationEngine, times(1))
-                .generateRecommendations(anyList(), anyMap());
+                .generateRecommendations(anyList(), anyList());
     }
 }
